@@ -180,10 +180,8 @@ Key architecture decisions:
 
 ## Submission Checklist
 
-1. GitHub repository link: Add your link here
-2. Live deployed URL: Add your link here
-3. Written explanation included in this README for:
-   - AI tools used and why
-   - Feature logic
-   - Cost optimization
-   - Development understanding
+1. GitHub repository link: https://github.com/sahil25123/hivon-blog
+2. Live deployed URL: https://hivon-blog-five.vercel.app/
+3. README with setup instructions, feature explanations, and AI tool usage (this file)
+4. Database schema and user records included in README
+5. Clear commit history demonstrating development process

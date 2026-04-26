@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import RoleGuard from "@/components/RoleGuard";
-import { generateSummary } from "@/lib/gemini";
 import { createClient } from "@/lib/supabase/client";
 
 function CreatePostForm() {
@@ -60,7 +59,24 @@ function CreatePostForm() {
         imageUrl = publicUrlData?.publicUrl || null;
       }
 
-      const summary = await generateSummary(cleanBody);
+      const summaryResponse = await fetch("/api/summary", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ bodyText: cleanBody }),
+      });
+
+      if (!summaryResponse.ok) {
+        throw new Error("Failed to generate AI summary. Please try again.");
+      }
+
+      const summaryData = await summaryResponse.json();
+      const summary = summaryData?.summary;
+
+      if (!summary) {
+        throw new Error("Failed to generate AI summary. Please try again.");
+      }
 
       const { error: insertError } = await supabase.from("posts").insert({
         title: cleanTitle,
