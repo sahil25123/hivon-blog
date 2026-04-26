@@ -32,7 +32,7 @@ export async function middleware(request) {
           });
         },
       },
-    }
+    },
   );
 
   const {
