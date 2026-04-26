@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
 export default function CommentSection({ postId }) {
@@ -14,7 +14,7 @@ export default function CommentSection({ postId }) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
-  const loadComments = async () => {
+  const loadComments = useCallback(async () => {
     setLoadingComments(true);
 
     const { data, error: commentsError } = await supabase
@@ -34,7 +34,7 @@ export default function CommentSection({ postId }) {
 
     setComments(data || []);
     setLoadingComments(false);
-  };
+  }, [postId, supabase]);
 
   useEffect(() => {
     let isMounted = true;
@@ -58,7 +58,7 @@ export default function CommentSection({ postId }) {
     return () => {
       isMounted = false;
     };
-  }, [postId, supabase]);
+  }, [loadComments, supabase]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
