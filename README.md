@@ -72,6 +72,23 @@ When a new post is created:
 - `posts`: `id`, `title`, `body`, `image_url`, `author_id`, `summary`
 - `comments`: `id`, `post_id`, `user_id`, `comment_text`
 
+### Current User Records (Testing)
+
+The following users/roles are currently configured in `public.users`:
+
+| Name         | Email                      | Role   |
+| ------------ | -------------------------- | ------ |
+| Author User  | author@hivon.com           | author |
+| Jagrat Gupta | jagrat25123gupta@gmail.com | viewer |
+| Admin User   | admin@hivon.com            | admin  |
+| Admin        | sahilgupta25123@gmail.com  | viewer |
+
+Role behavior used in the app:
+
+- `author`: can create posts and edit only own posts
+- `viewer`: can view posts, read summaries, and comment
+- `admin`: can edit any post and monitor all content
+
 ### Default Role for New Signups
 
 ```sql
@@ -209,7 +226,7 @@ Key architecture decisions:
 1. GitHub repository link: Add your link here
 2. Live deployed URL: Add your link here
 3. Written explanation included in this README for:
-	 - AI tools used and why
-	 - Feature logic
-	 - Cost optimization
-	 - Development understanding
+   - AI tools used and why
+   - Feature logic
+   - Cost optimization
+   - Development understanding
