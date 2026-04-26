@@ -76,62 +76,19 @@ When a new post is created:
 
 The following users/roles are currently configured in `public.users`:
 
-| Name         | Email                      | Role   |
-| ------------ | -------------------------- | ------ |
-| Author User  | author@hivon.com           | author |
-| Jagrat Gupta | jagrat25123gupta@gmail.com | viewer |
-| Admin User   | admin@hivon.com            | admin  |
-| Admin        | sahilgupta25123@gmail.com  | viewer |
+| Name        | Email            | Role   | Password |
+| ----------- | ---------------- | ------ | -------- |
+| Author User | author@hivon.com | author | 12345678 |
+| Admin User  | admin@hivon.com  | admin  | 12345678 |
+
+You can use these credentials to test the different role-based functionalities in the app.
+Your can also create new users via the signup page, but they will default to the `viewer` role and won't have permissions to create or edit posts.
 
 Role behavior used in the app:
 
 - `author`: can create posts and edit only own posts
 - `viewer`: can view posts, read summaries, and comment
 - `admin`: can edit any post and monitor all content
-
-### Default Role for New Signups
-
-```sql
-alter table public.users
-alter column role set default 'viewer';
-
-create or replace function public.handle_new_user()
-returns trigger
-language plpgsql
-security definer
-set search_path = public
-as $$
-begin
-	insert into public.users (id, name, email, role)
-	values (
-		new.id,
-		coalesce(new.raw_user_meta_data->>'name', ''),
-		new.email,
-		'viewer'
-	)
-	on conflict (id) do nothing;
-	return new;
-end;
-$$;
-
-drop trigger if exists on_auth_user_created on auth.users;
-
-create trigger on_auth_user_created
-after insert on auth.users
-for each row execute procedure public.handle_new_user();
-```
-
-### Promote User to Author or Admin
-
-```sql
-update public.users
-set role = 'author'
-where email = 'author@example.com';
-
-update public.users
-set role = 'admin'
-where email = 'admin@example.com';
-```
 
 ## Local Setup
 
