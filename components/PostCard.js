@@ -27,7 +27,9 @@ export default function PostCard({ post }) {
       </div>
 
       <div className="space-y-3 p-5">
-        <h2 className="line-clamp-2 text-lg font-semibold text-slate-900">{post.title}</h2>
+        <h2 className="line-clamp-2 text-lg font-semibold text-slate-900">
+          {post.title}
+        </h2>
 
         <div className="flex items-center justify-between text-xs text-slate-500">
           <span>{authorName}</span>

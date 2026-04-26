@@ -19,7 +19,9 @@ export default function CommentSection({ postId }) {
 
     const { data, error: commentsError } = await supabase
       .from("comments")
-      .select("id, comment_text, created_at, user:users!comments_user_id_fkey(name)")
+      .select(
+        "id, comment_text, created_at, user:users!comments_user_id_fkey(name)",
+      )
       .eq("post_id", postId)
       .order("created_at", { ascending: false });
 
@@ -115,7 +117,10 @@ export default function CommentSection({ postId }) {
               : "Unknown date";
 
             return (
-              <li key={comment.id} className="rounded-lg border border-slate-200 p-4">
+              <li
+                key={comment.id}
+                className="rounded-lg border border-slate-200 p-4"
+              >
                 <div className="mb-2 flex items-center justify-between">
                   <p className="text-sm font-semibold text-slate-800">
                     {comment.user?.name || "Anonymous"}
@@ -128,7 +133,9 @@ export default function CommentSection({ postId }) {
           })}
         </ul>
       ) : (
-        <p className="text-sm text-slate-500">No comments yet. Start the conversation.</p>
+        <p className="text-sm text-slate-500">
+          No comments yet. Start the conversation.
+        </p>
       )}
 
       {currentUser ? (
@@ -150,7 +157,10 @@ export default function CommentSection({ postId }) {
         </form>
       ) : (
         <p className="text-sm text-slate-600">
-          <Link href="/login" className="font-medium text-slate-900 hover:underline">
+          <Link
+            href="/login"
+            className="font-medium text-slate-900 hover:underline"
+          >
             Login to comment
           </Link>
         </p>

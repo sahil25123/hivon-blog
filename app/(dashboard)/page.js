@@ -60,7 +60,11 @@ export default async function DashboardPage({ searchParams }) {
   return (
     <div className="space-y-8">
       <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
-        <form method="GET" action="/dashboard" className="flex flex-col gap-3 sm:flex-row">
+        <form
+          method="GET"
+          action="/dashboard"
+          className="flex flex-col gap-3 sm:flex-row"
+        >
           <input
             type="text"
             name="query"

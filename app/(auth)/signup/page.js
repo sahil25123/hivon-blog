@@ -43,19 +43,28 @@ export default function SignupPage() {
       return;
     }
 
-    setSuccess("Signup successful. Please check your email to confirm your account.");
+    setSuccess(
+      "Signup successful. Please check your email to confirm your account.",
+    );
     setLoading(false);
   };
 
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
       <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-        <h1 className="text-2xl font-semibold text-slate-900">Create your account</h1>
-        <p className="mt-2 text-sm text-slate-600">Join Hivon Blog and start writing.</p>
+        <h1 className="text-2xl font-semibold text-slate-900">
+          Create your account
+        </h1>
+        <p className="mt-2 text-sm text-slate-600">
+          Join Hivon Blog and start writing.
+        </p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <div>
-            <label htmlFor="name" className="mb-1 block text-sm font-medium text-slate-700">
+            <label
+              htmlFor="name"
+              className="mb-1 block text-sm font-medium text-slate-700"
+            >
               Name
             </label>
             <input
@@ -70,7 +79,10 @@ export default function SignupPage() {
           </div>
 
           <div>
-            <label htmlFor="email" className="mb-1 block text-sm font-medium text-slate-700">
+            <label
+              htmlFor="email"
+              className="mb-1 block text-sm font-medium text-slate-700"
+            >
               Email
             </label>
             <input
@@ -125,7 +137,10 @@ export default function SignupPage() {
 
         <p className="mt-4 text-sm text-slate-600">
           Already have an account?{" "}
-          <Link href="/login" className="font-medium text-slate-900 hover:underline">
+          <Link
+            href="/login"
+            className="font-medium text-slate-900 hover:underline"
+          >
             Login
           </Link>
         </p>

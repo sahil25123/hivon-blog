@@ -77,7 +77,9 @@ function CreatePostForm() {
       router.push("/dashboard");
       router.refresh();
     } catch (submitError) {
-      setError(submitError.message || "Something went wrong while creating the post.");
+      setError(
+        submitError.message || "Something went wrong while creating the post.",
+      );
       setLoading(false);
       return;
     }
@@ -89,12 +91,16 @@ function CreatePostForm() {
     <div className="mx-auto w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <h1 className="text-2xl font-semibold text-slate-900">Create New Post</h1>
       <p className="mt-2 text-sm text-slate-600">
-        Write your content, upload an image, and we will generate an AI summary on creation.
+        Write your content, upload an image, and we will generate an AI summary
+        on creation.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-5">
         <div>
-          <label htmlFor="title" className="mb-1 block text-sm font-medium text-slate-700">
+          <label
+            htmlFor="title"
+            className="mb-1 block text-sm font-medium text-slate-700"
+          >
             Title
           </label>
           <input
@@ -109,7 +115,10 @@ function CreatePostForm() {
         </div>
 
         <div>
-          <label htmlFor="body" className="mb-1 block text-sm font-medium text-slate-700">
+          <label
+            htmlFor="body"
+            className="mb-1 block text-sm font-medium text-slate-700"
+          >
             Body
           </label>
           <textarea
@@ -124,7 +133,10 @@ function CreatePostForm() {
         </div>
 
         <div>
-          <label htmlFor="image" className="mb-1 block text-sm font-medium text-slate-700">
+          <label
+            htmlFor="image"
+            className="mb-1 block text-sm font-medium text-slate-700"
+          >
             Featured Image
           </label>
           <input

@@ -89,7 +89,10 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/dashboard" className="text-lg font-semibold tracking-tight text-slate-900">
+        <Link
+          href="/dashboard"
+          className="text-lg font-semibold tracking-tight text-slate-900"
+        >
           Hivon Blog
         </Link>
 
@@ -108,7 +111,9 @@ export default function Navbar() {
               ) : null}
 
               <div className="hidden items-center gap-2 sm:flex">
-                <span className="text-sm font-medium text-slate-700">{displayName}</span>
+                <span className="text-sm font-medium text-slate-700">
+                  {displayName}
+                </span>
                 <span
                   className={`rounded-full px-2.5 py-1 text-xs font-semibold capitalize ${roleBadgeClass}`}
                 >

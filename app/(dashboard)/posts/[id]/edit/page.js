@@ -62,7 +62,8 @@ export default function EditPostPage() {
 
       const role = profile?.role || "viewer";
       const isAdmin = role === "admin";
-      const isAuthorOwner = role === "author" && post.author_id === session.user.id;
+      const isAuthorOwner =
+        role === "author" && post.author_id === session.user.id;
 
       if (!isAdmin && !isAuthorOwner) {
         router.replace("/dashboard");
@@ -133,7 +134,10 @@ export default function EditPostPage() {
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-5">
         <div>
-          <label htmlFor="title" className="mb-1 block text-sm font-medium text-slate-700">
+          <label
+            htmlFor="title"
+            className="mb-1 block text-sm font-medium text-slate-700"
+          >
             Title
           </label>
           <input
@@ -147,7 +151,10 @@ export default function EditPostPage() {
         </div>
 
         <div>
-          <label htmlFor="body" className="mb-1 block text-sm font-medium text-slate-700">
+          <label
+            htmlFor="body"
+            className="mb-1 block text-sm font-medium text-slate-700"
+          >
             Body
           </label>
           <textarea

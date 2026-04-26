@@ -53,14 +53,18 @@ export default async function PostDetailsPage({ params }) {
 
         <div className="space-y-6 p-6 sm:p-8">
           <header className="space-y-2">
-            <h1 className="text-3xl font-semibold tracking-tight text-slate-900">{post.title}</h1>
+            <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
+              {post.title}
+            </h1>
             <p className="text-sm text-slate-500">
               By {post.author?.name || "Unknown author"} on {createdAt}
             </p>
           </header>
 
           <section className="rounded-xl border border-sky-200 bg-sky-50 p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-sky-800">AI Summary</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-sky-800">
+              AI Summary
+            </p>
             <p className="mt-2 text-sm leading-relaxed text-sky-900">
               {post.summary || "No summary available for this post."}
             </p>
